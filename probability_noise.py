@@ -1,4 +1,5 @@
 # coding: utf-8
+import numpy as np
 def probability_noise(array, n):
     max_prob = np.random.random() * (1 - 1 / n) + 1 / n
     rem_probs = np.random.dirichlet(np.ones(n-1)) * (1 - max_prob)
@@ -23,4 +24,7 @@ def probability_noise_one_hot(array):
     return noised_probs
     
     
-    
+if __name__ == "__main__":
+    np.random.multinomial(1, [1/6] * 6, size=50)
+    one_hot_array = np.random.multinomial(1, [1/6] * 6, size=50)
+    print(one_hot_array, '\n\n', probability_noise_one_hot(one_hot_array))
